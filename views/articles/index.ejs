@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="C:\Users\KIIT0001\Desktop\BI Project - 1\app.css">
+    <title>Blog Website</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-5 display-2 text-center fw-bold">| BlogIt. |</h1>
+        <a href="/articles/new" class="btn btn-success text-center">Create Article</a>
+
+        <% articles.forEach(article => {%>
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h4 class="card-title display-6"><%=article.title %></h4>
+                    <div class="card-subtitle text muted mb-2"><%=article.created.toLocaleDateString()%></div>
+                    <div class="card-text mb-3">
+                        <%=article.description%>
+                    </div>
+                    
+                    <a href="articles/<%=article.slug%>" class="btn btn-primary">Read More</a>
+                    <a href="articles/edit/<%=article.id%>" class="btn btn-info">Edit</a>
+                    <form action="/articles/<%=article.id%>?method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+        
+        <%})%>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>
